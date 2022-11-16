@@ -2,31 +2,16 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
-import Card from './card';
 import "tachyons";
 import { robots } from './robots';
+import CardsFactory from './CardsFactory';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-function names(){
-  let rs = []
-  for (let i = 0; i < robots.length; i++){
-    rs.push(
-      <Card 
-      key={i} 
-      id={robots[i].id} 
-      names={robots[i].name} 
-      username={robots[i].username}
-      email={robots[i].email} />
-      );
-  }
-  return rs;
-}
 
 root.render(
   <React.StrictMode>
     <div>
-    {names()}
+      <CardsFactory robots={robots} />
       {/* <Card />
       <Card />
       <Card />
