@@ -37,7 +37,7 @@ class CardsFactory extends React.Component{
             );
         }
         return (
-            <div>
+            <div className="cards">
                 {cardArray}
             </div>
         );
