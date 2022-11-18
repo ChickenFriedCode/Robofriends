@@ -3,21 +3,13 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import reportWebVitals from './reportWebVitals';
 import "tachyons";
-import { robots } from './robots';
-import CardsFactory from './CardsFactory';
-
+import App from './App';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
     <div>
-      <CardsFactory robots={robots} />
-      {/* <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card /> */}
+      <App/>
     </div>
   </React.StrictMode>
 );

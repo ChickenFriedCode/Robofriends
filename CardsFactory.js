@@ -10,17 +10,17 @@ class CardsFactory extends React.Component{
         const robo = this.props.robots;
         
         //I am unable to figure out how to get the .MAP to work on this section.
-        /*
-        let cardArray = robo.map((user, i) => {
-        <Card
-                    key={i}
-                    id={robo[i].id}
-                    names={robo[i].name}
-                    username={robo[i].username}
-                    email={robo[i].email}
-                />
-        }); 
-        */
+        
+        // let cardArray = robots.map((user, i) => {
+        // <Card
+        //             key={i}
+        //             id={robots[i].id}
+        //             names={robots[i].name}
+        //             username={robots[i].username}
+        //             email={robots[i].email}
+        //         />
+        // }); 
+        
         
         
         //So I'm using the standard For Loop.
@@ -28,8 +28,8 @@ class CardsFactory extends React.Component{
         for (let i = 0; i < robo.length; i++){
             cardArray.push(
                 <Card
-                    key={i}
-                    id={robo[i].id}
+                    key={robo[i].id}
+                    id={robo[i].name}
                     names={robo[i].name}
                     username={robo[i].username}
                     email={robo[i].email}
