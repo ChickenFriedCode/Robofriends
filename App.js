@@ -1,6 +1,5 @@
 import React from "react";
 import CardsFactory from "./CardsFactory";
-import { robots } from "./robots";
 import SearchBox from "./SearchBox";
 import './App.css'
 
@@ -14,12 +13,9 @@ class App extends React.Component{
     }
 
     componentDidMount(){
-        fetch('https://jsonplaceholder.typicode.com/users')
-        .then(response => response.json() )
-        .then(users => this.setState({robots: users}));
-        if (this.state.robots.length == 0){
-            this.setState({robots: robots})
-        }
+        fetch("https://jsonplaceholder.typicode.com/users")
+          .then((response) => response.json())
+          .then((users) => this.setState({ robots: users }));
     }
 
     onSearchChange = (event) => {
@@ -30,13 +26,22 @@ class App extends React.Component{
         const filterRobots = this.state.robots.filter((robot) => {
         return robot.name.toLowerCase().includes(this.state.searchField.toLocaleLowerCase());
         });
-        return(
-            <div className="tc">
-                <h1>ROBO-FRIENDS</h1>
-                <SearchBox searchChange={this.onSearchChange}/>
-                <CardsFactory robots={filterRobots} />
-            </div>
-        );
+        
+        if (this.state.robots.length === 0) {
+            return (
+                <div className="tc">
+                    <h1>Loading...</h1>
+                </div>
+            );
+        } else {
+            return(
+                <div className="tc">
+                    <h1>ROBO-FRIENDS</h1>
+                    <SearchBox searchChange={this.onSearchChange}/>
+                    <CardsFactory robots={filterRobots} />
+                </div>
+            );
+        }
     }
 }
 
