@@ -1,6 +1,7 @@
 import React from "react";
-import CardsFactory from "./CardsFactory";
-import SearchBox from "./SearchBox";
+import CardsFactory from "../components/CardsFactory";
+import SearchBox from "../components/SearchBox";
+import Scroll from "../components/Scroll";
 import './App.css'
 
 class App extends React.Component{
@@ -22,27 +23,30 @@ class App extends React.Component{
         this.setState({ searchField: event.target.value });
     }
 
-    render(){        
-        const filterRobots = this.state.robots.filter((robot) => {
-        return robot.name.toLowerCase().includes(this.state.searchField.toLocaleLowerCase());
+    render(){
+        const {robots, searchField} = this.state;
+        const filterRobots = robots.filter((robot) => {
+        return robot.name.toLowerCase().includes(searchField.toLocaleLowerCase());
         });
         
-        if (this.state.robots.length === 0) {
+        if (robots.length === 0) {
             return (
                 <div className="tc">
                     <h1>Loading...</h1>
                 </div>
             );
-        } else {
-            return(
-                <div className="tc">
-                    <h1>ROBO-FRIENDS</h1>
-                    <SearchBox searchChange={this.onSearchChange}/>
+        }
+        return(
+            <div className="tc">
+                <h1>ROBO-FRIENDS</h1>
+                <SearchBox searchChange={this.onSearchChange}/>
+                <Scroll>
                     <CardsFactory robots={filterRobots} />
-                </div>
-            );
+                </Scroll>
+            </div>
+        );
         }
     }
-}
+
 
 export default App;
